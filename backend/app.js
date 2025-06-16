@@ -14,7 +14,7 @@ const { verifyToken, isAdmin } = require("./middleware/auth-middleware");
 app.use(cors());
 app.use(express.json());
 app.get("/",(req,res)=>{
-    res.send("Server Running");
+    res.send("Server is Running");
 });
 app.use("/category", verifyToken, isAdmin, categoryRoutes);
 app.use("/brand", verifyToken, isAdmin,  brandRoutes);
