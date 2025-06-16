@@ -1,0 +1,49 @@
+<div class="py-10 px-20">
+    <h1>My Orders</h1>
+    <div class="space-y-4">
+        <!-- Cart Item -->
+        @for (order of orders; track $index) {
+            <h6>Order Id: {{order._id}}</h6>
+            <span>Date:</span><span>{{order.date | date:'mediumDate'}}</span>
+            <p>Order Status: {{order.status}}</p>
+        <div class="mb-10 shadow-lg">
+            @for(item of order.items; track $index) {
+            <div class="flex items-center border p-4 rounded-lg shadow-sm">
+                <img [src]="item.product.images[0]" alt="Product" class="w-24 h-24 object-cover rounded mr-4" />
+                <div class="flex-1">
+                    <h4 class="text-lg font-semibold">{{item.product.name}}</h4>
+                    <p class="text-sm text-gray-500">{{item.product.shortDescription}}</p>
+                    <div class="flex items-center gap-4 mt-2">
+                        <div>
+                            Total Amount : {{ sellingPrice(item.product)* item.quantity }}
+                        </div>
+                        <div class="flex items-center border rounded px-2 py-1">
+
+                            <span class="mx-2">{{item.quantity}}</span>
+
+                        </div>
+                        <div class="flex justify-between items-baseline">
+                            <div class="flex gap-2 items-baseline">
+                                <p class="text-lg  text-grey-400 mt-4"><s>₹{{item.product.Price}}</s></p>
+                                <p class="text-lg  text-orange-400 mt-4">{{item.product.discount}}% OFF</p>
+                                <span>
+                                    <p class="text-lg font-bold text-green-400 mt-4">₹{{ sellingPrice(item.product)
+                                        }}
+                                    </p>
+                                </span>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repeat above block for more items -->
+            </div>
+            }
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="top-line">
+    <div class="logo cursor-pointer" routerLink="/">
+      <!-- You can use an img or just text for the logo -->
+      <!-- <img src="logo.png" alt="Website Logo" /> -->
+      <span>MyShopName</span>
+      <!-- Or simply: <span>ShopEasy</span> -->
+    </div>
+
+    <div class="search-container">
+      <input type="text" placeholder="Search products..." [(ngModel)]="searchTerm" (keyup.enter)="onSearch($event)" />
+    </div>
+    <div class="profile-link flex gap-2 items-baseline">
+      @if (authService.isAdmin) {
+      <a routerLink="/admin">{{authService.userName}}</a>
+      }@else {
+      <a routerLink="/profile">{{authService.userName}}</a>
+      }
+
+      @if (authService.isLoggedIn) {
+      @if(!authService.isAdmin) {
+      <a routerLink="/wishlists"><mat-icon class="text-red-500">favorite</mat-icon></a>
+      <a routerLink="/cart"><mat-icon class="text-white">shopping_cart</mat-icon></a>
+      <a routerLink="/orders">Orders</a>
+      }
+      <a (click)="logout()" class="cursor-pointer ml-2">Logout</a>
+      }@else {
+      <a routerLink="/login">Log In</a>
+      <a routerLink="/register" class="cursor-pointer ml-2">Register</a>
+      }
+    </div>
+  </div>
+  @if (authService.isLoggedIn) {
+  <nav class="category-menu">
+    <ul>
+      @for (category of categoryList; track $index) {
+      <li (click)="searchCategory(category._id!)" class="cursor-pointer"><a>{{category.name}}</a></li>
+      }
+    </ul>
+  </nav>
+  }
+</header>
