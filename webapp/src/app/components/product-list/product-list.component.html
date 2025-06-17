@@ -41,7 +41,7 @@
         <div class="flex flex-wrap">
             @for (product of products; track $index) {
             <div class="w-4/12 mb-4">
-                <app-product-card [product]="product">{{product.name}}</app-product-card>
+                {{product.name}}
             </div>
             }@empty {
             <h6>No Products found</h6>
