@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl:"https://nodejs-backend-a3hybzchfychhhha.canadacentral-01.azurewebsites.net"
+    apiUrl:"http://localhost:3000"
 };
