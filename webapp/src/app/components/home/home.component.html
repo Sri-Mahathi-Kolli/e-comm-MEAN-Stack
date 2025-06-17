@@ -3,7 +3,7 @@
         <owl-carousel-o [options]="customOptions">
             @for (item of bannerImages; track $index) {
             <ng-template carouselSlide>
-                <div class="relative flex flex-col items-center" [routerLink]="'product/'+item._id">
+                <div class="relative flex flex-col items-center" [routerLink]="'/product/'+item._id">
                     <img [src]="item.images[0]" alt="images">
                     <span>{{item.name}}</span>
                 </div>
