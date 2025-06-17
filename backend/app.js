@@ -19,7 +19,7 @@ app.listen(port, () => {
 app.use(cors());
 app.use(express.json());
 app.get("/",(req,res)=>{
-    res.send("Server is Running");
+    res.send("Server Running");
 });
 app.use("/category", verifyToken, isAdmin, categoryRoutes);
 app.use("/brand", verifyToken, isAdmin,  brandRoutes);
