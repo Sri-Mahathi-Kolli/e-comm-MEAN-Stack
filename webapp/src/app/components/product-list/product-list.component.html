@@ -5,7 +5,7 @@
             <div class="w-full p-2 mb-4">
                 <mat-form-field class="w-full">
                     <mat-label>Category</mat-label>
-                    <mat-select name="categoryId" [(ngModel)]="categoryId" (valueChange)="getProducts()">
+                    <mat-select name="categoryId" [(ngModel)] = "categoryId" (valueChange)="getProducts()">
                         @for (item of category; track $index){
                         <mat-option [value]="item._id">{{item.name}}</mat-option>
                         }
@@ -15,7 +15,7 @@
             <div class="w-full p-2 mb-4">
                 <mat-form-field class="w-full">
                     <mat-label>Brands</mat-label>
-                    <mat-select name="brandId" [(ngModel)]="brandId" (valueChange)="getProducts()">
+                    <mat-select name="brandId" [(ngModel)] = "brandId" (valueChange)="getProducts()">
                         @for (item of brands; track $index){
                         <mat-option [value]="item._id">{{item.name}}</mat-option>
                         }
@@ -28,31 +28,29 @@
         <div class="flex justify-between">
             <h6>Products</h6>
             <mat-form-field class="w-40">
-                <mat-label>Order By</mat-label>
-                <mat-select (valueChange)="orderChange($event)">
-
-                    <mat-option [value]="1">Price Low to High</mat-option>
-                    <mat-option [value]="-1">Price High to Low</mat-option>
-
-                </mat-select>
-            </mat-form-field>
+                    <mat-label>Order By</mat-label>
+                    <mat-select (valueChange)="orderChange($event)">
+                        
+                        <mat-option [value]="1">Price Low to High</mat-option>
+                        <mat-option [value]="-1">Price High to Low</mat-option>
+                        
+                    </mat-select>
+                </mat-form-field>
         </div>
-
-        <div class="flex flex-wrap" *ngIf="products.length > 0; else noProducts">
-            <div *ngFor="let product of products; index as i" class="w-4/12 mb-4">
+        
+        <div class="flex flex-wrap">
+            @for (product of products; track product.id) {
+            <div class="w-4/12 mb-4">
                 <app-product-card [product]="product"></app-product-card>
             </div>
-        </div>
-
-        <ng-template #noProducts>
+            }@empty {
             <h6>No Products found</h6>
-        </ng-template>
-
+            }
+        </div>
+        <div class="flex gap-4">
+            <button mat-raised-button color="primary" [disabled]="page==1" (click)="pageChange(page-1)">Previous</button>  
+            <button mat-raised-button color="primary" (click)="pageChange(page+1)" [disabled]="!isNext">Next</button>          
+        </div>
     </div>
-    <div class="flex gap-4">
-        <button mat-raised-button color="primary" [disabled]="page==1" (click)="pageChange(page-1)">Previous</button>
-        <button mat-raised-button color="primary" (click)="pageChange(page+1)" [disabled]="!isNext">Next</button>
-    </div>
-</div>
 
 </div>
