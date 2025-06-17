@@ -16,7 +16,10 @@ app.listen(port, () => {
 });
 
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://brave-water-0850cf40f.6.azurestaticapps.net',
+  credentials: true
+}));
 app.use(express.json());
 app.get("/",(req,res)=>{
     res.send("Server Running");
