@@ -24,7 +24,7 @@ app.use("/customer", verifyToken, customerRoutes);
 app.use("/auth", authRoutes);
 
 async function connectDb(){
-    mongoose.connect("mongodb://localhost:27017", {
+    mongoose.connect(process.env.mongoConnection, {
         dbName: "e-comm-store-db",
     });
     console.log("mongodb connected");
