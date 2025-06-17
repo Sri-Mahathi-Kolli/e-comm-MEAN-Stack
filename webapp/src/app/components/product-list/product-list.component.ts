@@ -22,11 +22,11 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ProductListComponent {
   customerService = inject(CustomerService);
-  searchTerm: String = '';
+  searchTerm: string = '';
   categoryId: string = '';
-  sortBy: String = '';
-  sortOrder: Number = -1;
-  brandId: String = '';
+  sortBy: string = '';
+  sortOrder: number = -1;
+  brandId: string = '';
   page = 1;
   pageSize = 6;
   products: Product[] = [];
