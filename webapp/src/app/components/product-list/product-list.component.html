@@ -39,7 +39,7 @@
         </div>
         
         <div class="flex flex-wrap">
-            @for (product of products; track product.id) {
+            @for (product of products; track product._id) {
             <div class="w-4/12 mb-4">
                 <app-product-card [product]="product"></app-product-card>
             </div>
