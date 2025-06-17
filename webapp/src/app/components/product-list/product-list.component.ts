@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-product-list',
+  standalone: true,
   imports: [ProductCardComponent, 
     MatSelectModule, 
     FormsModule,
