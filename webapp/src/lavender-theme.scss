@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 
-// Define custom color palette using define-palette()
-$lavender-primary: mat.define-palette((
+// 1. Define your custom palette as a map
+$lavender-palette: (
   50:  #f9f6fc,
   100: #f2ebfa,
   200: #e4d9f4,
@@ -17,19 +17,31 @@ $lavender-primary: mat.define-palette((
   A400: #be8eff,
   A700: #a96aff,
   contrast: (
+    50:  rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
     500: white,
     600: white,
     700: white,
     800: white,
-    900: white
-  )
-));
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  ),
+);
 
-// Accent and warn palettes
+// 2. Use define-palette with your map
+$lavender-primary: mat.define-palette($lavender-palette);
+
+// 3. Accent and warn palettes
 $floral-accent: mat.define-palette(mat.$pink-palette, A200);
 $warn: mat.define-palette(mat.$red-palette);
 
-// Define theme
+// 4. Define theme
 $lavender-theme: mat.define-light-theme((
   color: (
     primary: $lavender-primary,
@@ -38,5 +50,5 @@ $lavender-theme: mat.define-light-theme((
   )
 ));
 
-// Apply theme to all components
+// 5. Apply theme to all components
 @include mat.all-component-themes($lavender-theme);
