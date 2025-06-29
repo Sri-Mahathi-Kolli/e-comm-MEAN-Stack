@@ -7,3 +7,7 @@
 .bg-lavender {
   background-color: #BFA2DB;
 }
+
+.mat-icon {
+  color: inherit !important; /* force inherit from your Tailwind class */
+}
