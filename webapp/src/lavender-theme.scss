@@ -1,8 +1,7 @@
 @use '@angular/material' as mat;
 
-
-// Define a custom palette
-$lavender-primary: mat-palette((
+// Define custom color palette using define-palette()
+$lavender-primary: mat.define-palette((
   50:  #f9f6fc,
   100: #f2ebfa,
   200: #e4d9f4,
@@ -17,22 +16,27 @@ $lavender-primary: mat-palette((
   A200: #d3b2ff,
   A400: #be8eff,
   A700: #a96aff,
-), 500);
-
-// Define accent and warn palettes
-$floral-accent: mat-palette($mat-pink, A200);
-$warn: mat-palette($mat-red);
-
-// Define the full theme
-$theme: mat-light-theme(
-  (
-    color: (
-      primary: $lavender-primary,
-      accent: $floral-accent,
-      warn: $warn
-    )
+  contrast: (
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white
   )
-);
+));
 
-// Include all Material component styles
-@include angular-material-theme($theme);
+// Accent and warn palettes
+$floral-accent: mat.define-palette(mat.$pink-palette, A200);
+$warn: mat.define-palette(mat.$red-palette);
+
+// Define theme
+$lavender-theme: mat.define-light-theme((
+  color: (
+    primary: $lavender-primary,
+    accent: $floral-accent,
+    warn: $warn,
+  )
+));
+
+// Apply theme to all components
+@include mat.all-component-themes($lavender-theme);
