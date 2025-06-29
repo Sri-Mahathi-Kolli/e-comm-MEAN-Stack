@@ -1,42 +1,57 @@
-<header class="header">
-  <div class="top-line">
-    <div class="logo cursor-pointer">
-      <!-- You can use an img or just text for the logo -->
-      <!-- <img src="logo.png" alt="Website Logo" /> -->
-      <span>MyShopName</span>
-      <!-- Or simply: <span>ShopEasy</span> -->
+<header class="header bg-floral shadow-md">
+  <div class="top-line flex flex-wrap items-center justify-between px-6 py-4 border-b border-lavender-dk">
+    
+    <!-- Logo -->
+    <div class="logo cursor-pointer text-2xl font-bold text-deep select-none">
+      <span>BloomAura</span>
     </div>
 
-    <div class="search-container">
-      <input type="text" placeholder="Search products..." [(ngModel)]="searchTerm" (keyup.enter)="onSearch($event)" />
+    <!-- Search Box -->
+    <div class="search-container flex-grow max-w-lg mx-6">
+      <input
+        type="text"
+        placeholder="Search products..."
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="onSearch($event)"
+        class="w-full border border-lavender rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-lavender-dk text-deep"
+      />
     </div>
-    <div class="profile-link flex gap-2 items-baseline">
+
+    <!-- Profile Links -->
+    <div class="profile-link flex gap-4 items-center text-deep text-sm font-medium whitespace-nowrap">
       @if (authService.isAdmin) {
-      <a routerLink="/admin">{{authService.userName}}</a>
-      }@else {
-      <a routerLink="/profile">{{authService.userName}}</a>
+        <a routerLink="/admin" class="hover:text-lavender transition"> {{authService.userName}} </a>
+      } @else {
+        <a routerLink="/profile" class="hover:text-lavender transition"> {{authService.userName}} </a>
       }
 
       @if (authService.isLoggedIn) {
-      @if(!authService.isAdmin) {
-      <a routerLink="/wishlists"><mat-icon class="text-red-500">favorite</mat-icon></a>
-      <a routerLink="/cart"><mat-icon class="text-white">shopping_cart</mat-icon></a>
-      <a routerLink="/orders">Orders</a>
-      }
-      <a (click)="logout()" class="cursor-pointer ml-2">Logout</a>
-      }@else {
-      <a routerLink="/login">Log In</a>
-      <a routerLink="/register" class="cursor-pointer ml-2">Register</a>
+        @if(!authService.isAdmin) {
+          <a routerLink="/wishlists" class="hover:text-lavender transition" title="Wishlists">
+            <mat-icon class="text-red-500">favorite</mat-icon>
+          </a>
+          <a routerLink="/cart" class="hover:text-lavender transition" title="Cart">
+            <mat-icon class="text-lavender">shopping_cart</mat-icon>
+          </a>
+          <a routerLink="/orders" class="hover:text-lavender transition">Orders</a>
+        }
+        <a (click)="logout()" class="cursor-pointer ml-2 text-lavender hover:text-lavender-dk transition">Logout</a>
+      } @else {
+        <a routerLink="/login" class="hover:text-lavender transition">Log In</a>
+        <a routerLink="/register" class="cursor-pointer ml-2 hover:text-lavender transition">Register</a>
       }
     </div>
   </div>
+
   @if (authService.isLoggedIn) {
-  <nav class="category-menu">
-    <ul>
-      @for (category of categoryList; track $index) {
-      <li (click)="searchCategory(category._id!)" class="cursor-pointer"><a>{{category.name}}</a></li>
-      }
-    </ul>
-  </nav>
+    <nav class="category-menu bg-lavender-dk text-white py-2">
+      <ul class="flex flex-wrap gap-6 justify-center max-w-5xl mx-auto px-4 text-sm font-semibold select-none">
+        @for (category of categoryList; track $index) {
+          <li (click)="searchCategory(category._id!)" class="cursor-pointer hover:text-floral transition px-3 py-1 rounded-md">
+            <a>{{category.name}}</a>
+          </li>
+        }
+      </ul>
+    </nav>
   }
 </header>
