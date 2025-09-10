@@ -32,7 +32,7 @@ const allowedOrigins = [
   
   // Vercel deployments
   'https://e-comm-mean-stack.vercel.app',
-  'https://saarvi.vercel.app',
+  'https://s-a-a-r-v-i.vercel.app',
   'https://e-comm-store.vercel.app',
   
   // Azure Static Web Apps
@@ -115,7 +115,7 @@ app.use(cors({
       console.log('⚠️ CORS origin check:', origin);
 // Enable CORS for Vercel frontend
 app.use(cors({
-  origin: 'https://saarvi.vercel.app',
+  origin: 'https://s-a-a-r-v-i.vercel.app',
   credentials: true
 }));
       // In production, you might want to be more restrictive

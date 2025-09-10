@@ -5,7 +5,7 @@
 Your CORS configuration is now fully compatible with all major platforms:
 
 ### 🎯 Explicitly Allowed Origins:
-- ✅ **Vercel**: `https://e-comm-mean-stack.vercel.app`, `https://saarvi.vercel.app`
+- ✅ **Vercel**: `https://e-comm-mean-stack.vercel.app`, `https://s-a-a-r-v-i.vercel.app`
 - ✅ **GitHub Pages**: `https://rakesh-sundari.github.io`, `https://rakesh-sundari.github.io/e-comm-Mean-Stack`
 - ✅ **Azure Static Web Apps**: Dynamic support for `*.azurestaticapps.net`
 - ✅ **Netlify**: Dynamic support for `*.netlify.app` and `*.netlify.com`
@@ -21,7 +21,7 @@ Your CORS configuration is now fully compatible with all major platforms:
 ## 🌐 Platform-Specific Setup
 
 ### 1. **Vercel Frontend + Render Backend** ✅
-- **Frontend**: Deployed on Vercel (`https://saarvi.vercel.app`)
+- **Frontend**: Deployed on Vercel (`https://s-a-a-r-v-i.vercel.app`)
 - **Backend**: Deployed on Render (`https://e-comm-mean-stack.onrender.com`)
 - **CORS**: ✅ Configured and working
 - **Environment**: Production environment points to Render backend
@@ -90,8 +90,8 @@ NODE_ENV=production
 MONGO_URI=mongodb+srv://...
 JWT_SECRET=your-secret
 STRIPE_SECRET_KEY=sk_test_...
-ALLOWED_ORIGINS=https://saarvi.vercel.app,https://rakesh-sundari.github.io
-FRONTEND_URL=https://saarvi.vercel.app
+ALLOWED_ORIGINS=https://s-a-a-r-v-i.vercel.app,https://rakesh-sundari.github.io
+FRONTEND_URL=https://s-a-a-r-v-i.vercel.app
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_app_password
 ```

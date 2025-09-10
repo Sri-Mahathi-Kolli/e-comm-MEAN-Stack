@@ -66,7 +66,7 @@
 
 Comprehensive CORS setup supports:
 - **Local Development**: localhost:4200, localhost:3000, etc.
-- **Vercel**: e-comm-mean-stack.vercel.app, saarvi.vercel.app
+- **Vercel**: e-comm-mean-stack.vercel.app, s-a-a-r-v-i.vercel.app
 - **Azure Static Web Apps**: *.azurestaticapps.net
 - **Azure App Service**: *.azurewebsites.net
 - **Netlify**: *.netlify.app

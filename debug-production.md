@@ -11,7 +11,7 @@
 ## 🔧 **Debugging Steps:**
 
 ### 1. **Check Browser Console Errors**
-- Open production site: https://saarvi.vercel.app
+- Open production site: https://s-a-a-r-v-i.vercel.app
 - Press F12 → Console tab
 - Look for JavaScript errors
 - Check Network tab for failed API calls
@@ -38,7 +38,7 @@ ls dist/webapp
 ```
 
 ### 4. **Environment Variables Check**
-- ✅ Frontend URL: https://saarvi.vercel.app
+- ✅ Frontend URL: https://s-a-a-r-v-i.vercel.app
 - ✅ Backend URL: https://e-comm-mean-stack.onrender.com
 - ❓ CORS configured for frontend domain?
 - ❓ Backend environment variables set?

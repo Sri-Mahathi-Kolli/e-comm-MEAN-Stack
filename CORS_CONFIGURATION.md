@@ -19,7 +19,7 @@ Your e-commerce application now has a robust CORS configuration that supports mu
 
 #### Vercel Deployments
 - `https://e-comm-mean-stack.vercel.app` - Main Vercel deployment
-- `https://saarvi.vercel.app` - Alternative Vercel deployment
+- `https://s-a-a-r-v-i.vercel.app` - Alternative Vercel deployment
 - **Dynamic Support**: All `*.vercel.app` domains (preview deployments)
 
 #### Azure Deployments

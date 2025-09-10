@@ -29,7 +29,7 @@ const allowedOrigins = [
   
   // Vercel deployments
   'https://e-comm-mean-stack.vercel.app',
-  'https://saarvi.vercel.app',
+  'https://s-a-a-r-v-i.vercel.app',
   
   // Azure Static Web Apps
   'https://calm-beach-03b22131e.azurestaticapps.net',
