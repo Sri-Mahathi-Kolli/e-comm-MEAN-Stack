@@ -54,7 +54,7 @@ const allowedOrigins = [
   
   // Render deployments (backend hosting)
   'https://e-comm-backend.onrender.com',
-  'https://e-comm-mean-stack.onrender.com',
+  'https://e-comm-mean-stack-42og.onrender.com',
   'https://saarvi-backend.onrender.com',
   
   // Custom domains (add your own)
