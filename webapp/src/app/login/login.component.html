@@ -1,0 +1,15 @@
+<div class="login-bg">
+  <div class="container">
+    <div class="form-container">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <h1>Sign in</h1>
+        <input type="email" formControlName="email" placeholder="Email" required autocomplete="off" />
+        <input type="password" formControlName="password" placeholder="Password" required autocomplete="off" />
+        <div style="margin: 10px 0;">
+          <a routerLink="/forgot" style="background:none;border:none;color:#FF416C;text-decoration:underline;font-size:14px;cursor:pointer;">Forgot Password?</a>
+        </div>
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+  </div>
+</div>

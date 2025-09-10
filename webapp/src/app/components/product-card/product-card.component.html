@@ -1,0 +1,44 @@
+<div class="product-card border-r-4 w-full flex flex-col h-full shadow-lg cursor-pointer" (click)="goToProduct((product._id ? product._id.toString() : ''))">
+    <!-- Image Section -->
+    <div style="width: 100%; height: 200px; overflow: hidden;">
+        <img [src]="product.images[0]" alt="Product Image"
+            class="w-full h-full object-cover" />
+    </div>
+    <!-- Content Section -->
+    <div class="p-4 flex flex-col justify-between">
+        <h6 class="text-sm font-semibold product-title">{{product.name}}</h6>
+        <p class="text-xs text-gray-600 product-description" style="font-size: 14px; color: #777; margin: 10px 0;">
+            {{product.shotDescription}}
+        </p>
+        <!-- Price and Actions -->
+        <div class="flex justify-between items-center">
+            <div class="flex gap-1">
+                <p class="!text-xl text-gray-400 mb-4">$<s>{{ product.Price }}</s></p>
+                <p class="!text-xs font-bold text-red-200 mb-4">{{ product.discount }}% OFF</p><br>
+                <span class="!text-xl text-green-500 font-bold mb-4">${{ sellingPrice }}</span>
+            </div>
+            <div class="action-buttons-group" style="display: flex; gap: 6px; align-items: center;" (click)="$event.stopPropagation()">
+                <button mat-fab color="warn" style="width: 40px; height: 40px; min-height: 40px; box-shadow: none;"
+                    (click)="addToWishList(product)">
+                    <mat-icon style="font-size: 20px;" class="text-red-500">
+                        @if(isInWishlist(product)) {
+                        favorite
+                        } @else {
+                        favorite_border
+                        }
+                    </mat-icon>
+                </button>
+                <button mat-fab color="primary" (click)="addToCart(product)"
+                    style="width: 40px; height: 40px; min-height: 40px; box-shadow: none;">
+                    @if(isProductInCart(product._id ? product._id.toString() : '')){
+                    <mat-icon style="font-size: 20px;">remove_shopping_cart</mat-icon>
+                    }@else{
+                    <mat-icon style="font-size: 20px;">add_shopping_cart</mat-icon>
+                    }
+                </button>
+                <!-- Enhanced Icon-only Social Share -->
+                <app-social-share [product]="product" [iconOnly]="true"></app-social-share>
+            </div>
+        </div>
+    </div>
+</div>

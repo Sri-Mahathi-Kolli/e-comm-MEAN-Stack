@@ -1,0 +1,40 @@
+<div class="register-split-container">
+  <div class="register-image-side"></div>
+  <div class="register-form-side">
+    <div class="register-card">
+      <h2 class="text-2xl font-bold mb-6 text-center">Register</h2>
+      <form [formGroup]="registerForm">
+        <!-- First Name Field -->
+        <div class="mb-4">
+          <mat-form-field class="w-full">
+            <mat-label for="firstName">First Name</mat-label>
+            <input type="text" formControlName="firstName" matInput required>
+          </mat-form-field>
+        </div>
+        <!-- Last Name Field -->
+        <div class="mb-4">
+          <mat-form-field class="w-full">
+            <mat-label for="lastName">Last Name</mat-label>
+            <input type="text" formControlName="lastName" matInput required>
+          </mat-form-field>
+        </div>
+        <!-- Email Field -->
+        <div class="mb-4">
+          <mat-form-field class="w-full">
+            <mat-label for="name">emial</mat-label>
+            <input type="text" formControlName="email" matInput required>
+          </mat-form-field>
+        </div>
+        <!-- Password Field -->
+        <div class="mb-6">
+          <mat-form-field class="w-full">
+            <mat-label for="name">password</mat-label>
+            <input type="password" formControlName="password" matInput required>
+          </mat-form-field>
+        </div>
+        <!-- Submit Button -->
+        <button mat-raised-button (click)="register()" [disabled]="registerForm.invalid">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,163 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #0084ff;
+  color: #fff;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+
+  .top-line {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 16px;
+    min-height: 64px;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    height: 40px;
+    width: auto;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .logo img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .category-menu {
+    flex: 1;
+    margin-left: 12px;
+    ul {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        a {
+          color: #fff;
+          font-size: 1.05rem;
+          font-weight: 500;
+          text-decoration: none;
+          transition: color 0.2s;
+            cursor: default;
+              cursor: pointer;
+          &:hover {
+            color: #ffd600;
+          }
+        }
+      }
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    .search-container {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 8px;
+      padding: 0 8px;
+      height: 36px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-right: 8px;
+      input {
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        background: transparent;
+        color: #333;
+        width: 120px;
+        padding: 0 4px;
+      }
+      .search-btn {
+        background: none;
+        border: none;
+        color: #0084ff;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-left: 4px;
+      }
+    }
+    .icon-btn {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      position: relative;
+      margin-right: 4px;
+      transition: color 0.2s;
+    cursor: default;
+  cursor: pointer;
+      &:hover {
+        color: #ffd600;
+      }
+      mat-icon {
+        font-size: 1.5rem;
+        margin-right: 4px;
+      }
+      .badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #ffd600;
+        color: #0084ff;
+        border-radius: 50%;
+        padding: 2px 7px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+    }
+// ...existing code...
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 0 8px;
+    .top-line {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0 8px;
+      min-height: 100px;
+    }
+    .category-menu {
+      margin: 12px 0;
+      ul {
+        gap: 10px;
+        font-size: 0.95rem;
+      }
+    }
+    .header-actions {
+      gap: 10px;
+      .search-container input[type="text"] {
+        width: 80px;
+      }
+    }
+    .logo {
+      height: 36px;
+      width: 36px;
+    }
+    .logo img {
+      height: 24px;
+      width: 24px;
+    }
+  }
+}

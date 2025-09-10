@@ -1,0 +1,22 @@
+.stripe-payment-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card-element {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.card-element-container {
+  margin-bottom: 16px;
+}
+
+.error-message {
+  font-size: 14px;
+  margin-top: 8px;
+}

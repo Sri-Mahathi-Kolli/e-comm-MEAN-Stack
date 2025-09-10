@@ -1,0 +1,62 @@
+<div class="login-bg"></div>
+<!-- ...existing code... -->
+<div class="auth-container" [ngClass]="{ 'right-active': isRegister }">
+  <div class="auth-card">
+    <div class="auth-left">
+      <h1>Welcome Back!</h1>
+      <p>To know your attendance, results<br> Please Login</p>
+      <button class="panel-btn" (click)="togglePanel(false)">Sign In</button>
+      <form *ngIf="showLoginForm && !isRegister" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <h1>Sign in</h1>
+        <input type="email" formControlName="email" placeholder="Email" required autocomplete="off" />
+        <input type="password" formControlName="password" placeholder="Password" required autocomplete="off" />
+        <div style="margin: 10px 0;">
+          <button type="button" class="forgot-link" (click)="onForgotPassword()" style="background:none;border:none;padding:0;color:#FF416C;text-decoration:underline;font-size:14px;cursor:pointer;">Forgot Password?</button>
+        </div>
+        <button type="submit" class="auth-btn" [disabled]="loginForm.invalid">Sign In</button>
+      </form>
+    </div>
+    <div class="auth-right">
+      <h1>Hello, New User!</h1>
+      <p>To create new account,<br> Please Sign Up</p>
+      <button class="panel-btn" (click)="togglePanel(true)">Sign Up</button>
+      <form *ngIf="showRegisterForm && isRegister" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <input type="email" formControlName="email" placeholder="Email*" required autocomplete="off" />
+        <input type="password" formControlName="password" placeholder="Password*" required autocomplete="off" />
+        <input type="password" formControlName="confirmPassword" placeholder="Password Again*" required autocomplete="off" />
+        <input type="text" formControlName="firstName" placeholder="First Name*" required autocomplete="off" />
+        <input type="text" formControlName="lastName" placeholder="Last Name*" required autocomplete="off" />
+        <div class="security-questions">
+          <label>Security Question 1</label>
+          <select formControlName="question1">
+            <option value="">Select a question</option>
+            <option value="What is your pet's name?">What is your pet's name?</option>
+            <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+            <option value="What was your first school?">What was your first school?</option>
+            <option value="What is your favorite food?">What is your favorite food?</option>
+          </select>
+          <input type="text" formControlName="answer1" placeholder="Answer*" required autocomplete="off" />
+          <label>Security Question 2</label>
+          <select formControlName="question2">
+            <option value="">Select a question</option>
+            <option value="What is your pet's name?">What is your pet's name?</option>
+            <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+            <option value="What was your first school?">What was your first school?</option>
+            <option value="What is your favorite food?">What is your favorite food?</option>
+          </select>
+          <input type="text" formControlName="answer2" placeholder="Answer*" required autocomplete="off" />
+          <label>Security Question 3</label>
+          <select formControlName="question3">
+            <option value="">Select a question</option>
+            <option value="What is your pet's name?">What is your pet's name?</option>
+            <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+            <option value="What was your first school?">What was your first school?</option>
+            <option value="What is your favorite food?">What is your favorite food?</option>
+          </select>
+          <input type="text" formControlName="answer3" placeholder="Answer*" required autocomplete="off" />
+        </div>
+        <button type="submit" class="auth-btn" [disabled]="registerForm.invalid">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>

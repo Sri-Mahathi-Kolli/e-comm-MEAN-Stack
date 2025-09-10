@@ -1,0 +1,62 @@
+.orders-container {
+  background: #f7faff;
+  padding: 32px 0;
+}
+.order-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(77,142,239,0.08);
+  margin-bottom: 24px;
+  padding: 24px;
+}
+.order-header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 12px;
+}
+.order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 18px 0;
+}
+.order-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 18px;
+}
+
+.cancel-button {
+  background: #ff4444 !important;
+  color: white !important;
+  font-weight: 600;
+  
+  &:hover {
+    background: #cc3333 !important;
+  }
+  
+  &:disabled {
+    background: #cccccc !important;
+    color: #666666 !important;
+  }
+}
+
+.cancel-info-text {
+  font-size: 0.75rem;
+  color: #666;
+  font-style: italic;
+}
+
+.status-cancelled {
+  background: #ffebee !important;
+  color: #c62828 !important;
+}
+
+.status-shipped {
+  background: #e3f2fd !important;
+  color: #1565c0 !important;
+}

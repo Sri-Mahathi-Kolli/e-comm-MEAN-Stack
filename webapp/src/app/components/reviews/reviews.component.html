@@ -1,0 +1,71 @@
+<div class="reviews-container" *ngIf="!loading; else loadingTemplate">
+  <div class="reviews-header">
+    <h3 class="reviews-title">Customer Reviews</h3>
+    <p class="reviews-subtitle" *ngIf="reviews.length > 0">Showing {{ reviews.length }} of the latest reviews</p>
+  </div>
+
+  <div class="reviews-list" *ngIf="reviews.length > 0; else noReviewsTemplate">
+    <div class="review-card" *ngFor="let review of reviews; trackBy: trackByReviewId">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">
+            <mat-icon>person</mat-icon>
+          </div>
+          <div class="reviewer-details">
+            <h4 class="reviewer-name">{{ review.userName }}</h4>
+            <div class="review-meta">
+              <span class="review-date">{{ formatDate(review.createdAt) }}</span>
+              <mat-chip class="verified-chip" *ngIf="review.verified" color="primary">
+                <mat-icon>verified</mat-icon>
+                Verified Purchase
+              </mat-chip>
+            </div>
+          </div>
+        </div>
+        
+        <div class="review-rating">
+          <div class="stars">
+            <mat-icon 
+              *ngFor="let star of getStarArray(review.rating)" 
+              [class]="star <= review.rating ? 'star-filled' : 'star-empty'">
+              star
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-content">
+        <h5 class="review-title">{{ review.title }}</h5>
+        <p class="review-comment">{{ review.comment }}</p>
+      </div>
+
+      <div class="review-actions">
+        <button 
+          mat-button 
+          class="helpful-button"
+          (click)="markHelpful(review._id!)"
+          [disabled]="!review._id">
+          <mat-icon>thumb_up</mat-icon>
+          Helpful ({{ review.helpful || 0 }})
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noReviewsTemplate>
+    <div class="no-reviews">
+      <mat-icon class="no-reviews-icon">rate_review</mat-icon>
+      <h4>No reviews yet</h4>
+      <p>Be the first to review this product!</p>
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loading-container">
+    <div class="loading-spinner">
+      <mat-icon class="rotating">refresh</mat-icon>
+    </div>
+    <p>Loading reviews...</p>
+  </div>
+</ng-template>

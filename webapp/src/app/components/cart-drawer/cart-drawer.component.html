@@ -1,0 +1,32 @@
+<mat-drawer-container class="cart-drawer-container" autosize>
+  <mat-drawer #drawer mode="over" position="end" [(opened)]="opened" class="cart-drawer">
+    <div class="cart-drawer-header flex justify-between items-center p-4 border-b">
+      <h3 class="text-xl font-bold">Shopping Cart</h3>
+  <button mat-icon-button (click)="closeDrawer()"><mat-icon>close</mat-icon></button>
+    </div>
+    <div class="cart-drawer-content p-6">
+      <ng-container *ngIf="cartService.items.length === 0; else cartItems">
+        <div class="text-center text-gray-500 my-16">No products in the cart.</div>
+        <button mat-raised-button color="primary" class="w-full mt-8" (click)="continueShopping()">CONTINUE SHOPPING</button>
+      </ng-container>
+      <ng-template #cartItems>
+        <div *ngFor="let item of cartService.items" class="flex items-center justify-between mb-6">
+          <div class="flex items-center flex-1 cursor-pointer" (click)="openProduct(item.product._id + '')">
+            <img [src]="item.product.images[0]" alt="Product" class="w-16 h-16 object-cover rounded-lg" />
+            <div class="ml-4">
+              <div class="font-semibold">{{item.product.name}}</div>
+              <div class="text-gray-500">{{item.quantity}} × ${{item.product.Price}}</div>
+            </div>
+          </div>
+          <button mat-icon-button color="warn" (click)="removeFromCart((item.product._id + ''))"><mat-icon>close</mat-icon></button>
+        </div>
+        <div class="flex justify-between items-center font-bold text-lg border-t pt-4 mb-4">
+          <span>Subtotal:</span>
+          <span>${{getSubtotal()}}</span>
+        </div>
+        <button mat-raised-button color="primary" class="w-full mb-3" (click)="viewCart()">VIEW CART</button>
+        <button mat-raised-button color="accent" class="w-full" (click)="checkout()">CHECKOUT</button>
+      </ng-template>
+    </div>
+  </mat-drawer>
+</mat-drawer-container>

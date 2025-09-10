@@ -1,0 +1,15 @@
+<div class="px-10 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (product of wishlistService.wishlists; track $index){
+        <div class="w-full">
+            <app-product-card [product]="product"></app-product-card>
+        </div>
+        }@empty{
+        <div class="col-span-full text-center">
+            <h1 style="color:red; text-align: center;">No Items in wishlists</h1>
+        </div>
+        }
+
+    </div>
+
+</div>

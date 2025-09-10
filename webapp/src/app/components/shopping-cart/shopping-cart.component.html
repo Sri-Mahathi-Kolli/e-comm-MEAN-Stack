@@ -1,0 +1,189 @@
+<body class="bg-gray-100 font-sans">
+    @if(orderStep==0){
+    <div class="max-w-5xl mx-auto p-6">
+        <h2 class="text-3xl font-bold mb-6">Your Shopping Cart</h2>
+
+        <!-- Cart Item -->
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+
+            @for(item of cartItems; track $index){
+            <div class="flex  items-center justify-between p-6 border-b">
+                <div class="flex items-center">
+                    <img [src]="item.product.images[0]" alt="Product" class="w-20 h-20 object-cover rounded" />
+                    <div class="ml-4">
+                        <h4 class="!text-xl font-semibold">{{item.product.name}}</h4>
+                        <p class="text-gray-500 text-sm">{{item.product.shotDescription}}</p>
+                        <div class="flex gap-1 items-baseline">
+                            <p class="!text-xl text-gray-400 mb-4">$<s>{{ item.product.Price }}</s></p>
+                            <p class="!text-xs font-bold text-red-200 mb-4">{{ item.product.discount }}% OFF</p><br>
+                            <span class="!text-xl text-green-500 font-bold mb-4">${{ sellingPrice(item.product)
+                                }}</span>
+
+                        </div>
+                        Total Amount :{{sellingPrice(item.product)*item.quantity}}
+                    </div>
+
+                </div>
+                <div class="flex items-center">
+                    <div class="flex itemss-center">
+                        <span class="m-4">Quantity:</span>
+                        <span (click)="addToCart(item.product._id!,-1)"
+                            class="tex-lg bg-gray-200 rounded-sm px-3 py-2 cursor-pointer shadow">-</span>
+                        <span class="mx-2">{{item.quantity}}</span>
+                        <span (click)="addToCart(item.product._id!,1)"
+                            class="tex-lg bg-gray-400 rounded-sm px-3 py-2 cursor-pointer shadow">+</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            }
+        </div>
+
+        <!-- Repeat cart items as needed -->
+
+        <!-- Summary Section -->
+        <div class="bg-white shadow rounded-lg p-6 mt-6">
+            <h3 class="text-xl font-bold mb-4">Order Summary</h3>
+            <div class="flex justify-between mb-2">
+                <span>Subtotal</span>
+                <span>{{totalAmount}}</span>
+            </div>
+            <div class="flex justify-between text-lg font-bold border-t pt-2">
+                <span>Total</span>
+                <span>{{"$"+totalAmount}}</span>
+            </div>
+            <button (click)="checkout()"
+                class="w-full mt-4 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+            }@else if(orderStep==1){
+            <div class="checkout-bg min-h-screen py-12">
+                <!-- Progress Bar -->
+                <div class="checkout-progress-bar w-full max-w-5xl mx-auto mb-8 flex items-center justify-between">
+                    <div class="progress-step active">Cart</div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step active">Address</div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">Payment</div>
+                </div>
+                <div class="checkout-container max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Address & Payment Form -->
+                    <div class="checkout-form-card bg-white rounded-2xl shadow-lg p-10 flex flex-col justify-center animate-fadeIn">
+                        <h2 class="text-3xl font-extrabold mb-6 text-gray-900">Checkout</h2>
+                        <form [formGroup]="addressForm" class="space-y-6">
+                                    <div>
+                                        <label class="block text-lg font-semibold mb-2 text-gray-700">Address 1 <span class="text-red-500">*</span></label>
+                                        <input type="text" formControlName="address1" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                        <div *ngIf="addressForm.get('address1')?.invalid && addressForm.get('address1')?.touched" class="text-red-500 text-sm mt-1">Address 1 is required.</div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-lg font-semibold mb-2 text-gray-700">Address 2</label>
+                                        <input type="text" formControlName="address2" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                    </div>
+                                    <div>
+                                        <label class="block text-lg font-semibold mb-2 text-gray-700">City <span class="text-red-500">*</span></label>
+                                        <input type="text" formControlName="city" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                        <div *ngIf="addressForm.get('city')?.invalid && addressForm.get('city')?.touched" class="text-red-500 text-sm mt-1">City is required.</div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-lg font-semibold mb-2 text-gray-700">Pincode <span class="text-red-500">*</span></label>
+                                        <input type="text" formControlName="pincode" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                        <div *ngIf="addressForm.get('pincode')?.invalid && addressForm.get('pincode')?.touched" class="text-red-500 text-sm mt-1">Pincode is required.</div>
+                                    </div>
+                                    <!-- Coupon Code -->
+                                    <div class="flex gap-2 items-center">
+                                        <input type="text" placeholder="Coupon code" class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                                        <button type="button" class="bg-pink-500 text-white px-6 py-3 rounded-lg font-bold shadow hover:bg-pink-600 transition">Apply</button>
+                                    </div>
+                                    <!-- Delivery Options -->
+                                    <div>
+                                        <label class="block text-lg font-semibold mb-2 text-gray-700">Delivery Options</label>
+                                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <option value="standard">Standard Delivery (Free)</option>
+                                            <option value="express">Express Delivery (+$5)</option>
+                                        </select>
+                                    </div>
+                                    <!-- Order Notes -->
+                                    <div>
+                                        <label class="block text-lg font-semibold mb-2 text-gray-700">Order Notes</label>
+                                        <textarea rows="2" placeholder="Notes for delivery..." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                    </div>
+                                    <!-- Payment Icons -->
+                                    <div class="flex gap-4 items-center mt-2">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/349/349221.png" alt="Visa" style="width:40px;">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/349/349230.png" alt="MasterCard" style="width:40px;">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" alt="PayPal" style="width:40px;">
+                                    </div>
+                                    <button mat-raised-button class="w-full bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 rounded-lg font-bold shadow-lg hover:from-pink-600 hover:to-blue-600 transition" (click)="addAddress()" [disabled]="addressForm.invalid">Continue</button>
+                                </form>
+                </div>
+                <!-- Order Summary -->
+            <div class="checkout-summary-card bg-blue-50 rounded-2xl shadow-lg p-10 flex flex-col justify-center animate-fadeIn">
+        <!-- Floating Help/Chat Widget -->
+        <button class="help-chat-widget fixed bottom-24 right-8 z-50 bg-gradient-to-r from-blue-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:scale-105 transition cursor-pointer">
+            <img src="https://cdn-icons-png.flaticon.com/512/726/726623.png" alt="Chat" style="width:24px;">
+            Need Help?
+        </button>
+                    <h3 class="text-2xl font-bold mb-6 text-blue-700">Order Summary</h3>
+                    <div class="space-y-4 mb-6">
+                        @for(item of cartItems; track $index){
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <img [src]="item.product.images[0]" alt="Product" class="w-16 h-16 object-cover rounded-lg" />
+                                <div>
+                                    <h4 class="font-semibold text-lg text-gray-900">{{item.product.name}}</h4>
+                                    <p class="text-gray-500 text-sm">Qty: {{item.quantity}}</p>
+                                </div>
+                            </div>
+                            <span class="font-bold text-green-600 text-lg">${{ sellingPrice(item.product)*item.quantity }}</span>
+                        </div>
+                        }
+                    </div>
+                    <div class="flex justify-between mb-2 text-lg">
+                        <span>Subtotal</span>
+                        <span class="font-bold">${{totalAmount}}</span>
+                    </div>
+                    <div class="flex justify-between text-xl font-bold border-t pt-4">
+                        <span>Total</span>
+                        <span class="text-blue-700">${{totalAmount}}</span>
+                    </div>
+                    <button class="w-full mt-8 bg-gradient-to-r from-pink-500 to-blue-500 text-white py-4 rounded-lg font-bold shadow-lg hover:from-pink-600 hover:to-blue-600 transition" (click)="addAddress()" [disabled]="addressForm.invalid">Place Order</button>
+                </div>
+            </div>
+        </div>
+    }@else if(orderStep==2){
+        <div class="flex flex-col items-center justify-center min-h-[60vh]">
+            <div class="bg-white rounded-2xl shadow-lg p-10 w-full max-w-md flex flex-col items-center animate-fadeIn">
+                <h1 class="text-3xl font-extrabold mb-8 text-gray-900 text-center">Select Payment Method</h1>
+                <mat-radio-group [(ngModel)]="paymentType" class="flex gap-8 mb-8">
+                    <mat-radio-button value="cash" class="text-lg">Cash</mat-radio-button>
+                    <mat-radio-button value="card" class="text-lg">Card</mat-radio-button>
+                </mat-radio-group>
+                <button (click)="paymentType === 'card' ? addAddress() : completeOrder()"
+                    [disabled]="isProcessingPayment"
+                    class="w-full py-3 px-8 rounded-full bg-gradient-to-r from-blue-500 to-pink-500 text-white font-bold text-lg shadow-lg hover:from-blue-600 hover:to-pink-600 transition disabled:opacity-50">
+                    <span *ngIf="!isProcessingPayment">Continue</span>
+                    <span *ngIf="isProcessingPayment">Processing...</span>
+                </button>
+            </div>
+        </div>
+    }@else if(orderStep==3){
+        <!-- Stripe Payment Step -->
+        <div class="flex flex-col items-center justify-center min-h-[60vh]">
+            <div class="bg-white rounded-2xl shadow-lg p-10 w-full max-w-lg animate-fadeIn">
+                <app-stripe-payment 
+                    [amount]="totalAmount"
+                    [clientSecret]="clientSecret"
+                    (paymentSuccess)="onStripePaymentSuccess($event)"
+                    (paymentError)="onStripePaymentError($event)"
+                    (paymentCancel)="onStripePaymentCancel()">
+                </app-stripe-payment>
+            </div>
+        </div>
+
+    }
+</body>

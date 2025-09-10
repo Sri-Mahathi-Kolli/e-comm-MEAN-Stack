@@ -1,0 +1,177 @@
+<div class="profile-page">
+  <!-- Sidebar -->
+  <aside class="profile-sidebar">
+    <div class="profile-user">
+      <img
+        [src]="user.profileImage ? user.profileImage : 'assets/profile-placeholder.png'"
+        alt="Profile"
+        class="profile-img"
+      />
+  <h2>{{ displayName }}</h2>
+  <p>{{ user?.country || 'Your Location' }}</p>
+
+      <button type="button" class="profile-btn" (click)="openImageModal()">
+        Upload Image
+      </button>
+
+      <!-- Image upload modal -->
+      <ng-container *ngIf="showImageModal">
+        <div class="modal-backdrop">
+          <div class="modal-content">
+            <h3>Select Profile Image</h3>
+            <form (submit)="uploadImage($event)">
+              <input
+                type="file"
+                accept="image/*"
+                (change)="onImageSelected($event)"
+              />
+              <div class="modal-actions">
+                <button
+                  type="submit"
+                  class="profile-btn"
+                  [disabled]="!selectedImage"
+                >
+                  OK
+                </button>
+                <button
+                  type="button"
+                  class="profile-btn cancel"
+                  (click)="closeImageModal()"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <nav class="profile-nav">
+  <a href="#" class="profile-link" (click)="goToOrders($event)">Orders</a>
+  <a routerLink="/profile" class="profile-link active">Profile</a>
+  <a href="#" class="profile-link" (click)="scrollToProfileDetails($event)">Addresses</a>
+  <a href="#" class="profile-link" (click)="logout()">Log out</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="profile-main">
+    <h1>Your Profile</h1>
+
+    <!-- Feature Cards -->
+    <div class="profile-cards">
+      <div class="profile-card">
+        <span class="profile-icon">🚚</span>
+        <h3>Free Shipping & Return</h3>
+        <p>Free Shipping over ₹300</p>
+      </div>
+      <div class="profile-card">
+        <span class="profile-icon">💸</span>
+        <h3>Money Back Guarantee</h3>
+        <p>30 Days Money Back Guarantee</p>
+      </div>
+      <div class="profile-card">
+        <span class="profile-icon">📞</span>
+        <h3>24/7 Support</h3>
+        <p>+91-98765-43210</p>
+      </div>
+    </div>
+
+  <!-- Personal Details -->
+  <section id="profile-details-section" class="profile-details">
+      <h2>Personal Details</h2>
+      <form (submit)="saveProfile($event)">
+        <div class="form-row">
+          <input
+            type="text"
+            placeholder="First Name"
+            [(ngModel)]="user.firstName"
+            name="firstName"
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            [(ngModel)]="user.lastName"
+            name="lastName"
+          />
+        </div>
+        <div class="form-row">
+          <input
+            type="text"
+            placeholder="Company"
+            [(ngModel)]="user.company"
+            name="company"
+          />
+          <input
+            type="text"
+            placeholder="Street"
+            [(ngModel)]="user.street"
+            name="street"
+          />
+        </div>
+        <div class="form-row">
+          <input
+            type="text"
+            placeholder="ZIP"
+            [(ngModel)]="user.zip"
+            name="zip"
+          />
+          <input
+            type="text"
+            placeholder="State"
+            [(ngModel)]="user.state"
+            name="state"
+          />
+        </div>
+        <div class="form-row">
+          <input
+            type="text"
+            placeholder="Country"
+            [(ngModel)]="user.country"
+            name="country"
+          />
+          <input
+            type="text"
+            placeholder="Telephone"
+            [(ngModel)]="user.telephone"
+            name="telephone"
+          />
+        </div>
+        <div class="form-row">
+          <input
+            type="email"
+            placeholder="Email"
+            [(ngModel)]="user.email"
+            name="email"
+            disabled
+            class="disabled-input"
+          />
+        </div>
+        <button type="submit" class="profile-btn">Save Changes</button>
+      </form>
+    </section>
+
+    <!-- Change Password -->
+    <section class="profile-password">
+      <h2>Change Password</h2>
+      <form (submit)="changePassword($event)">
+        <div class="form-row">
+          <input type="password" placeholder="Old Password" name="oldPassword" [(ngModel)]="oldPassword" />
+        </div>
+        <div class="form-row">
+          <input type="password" placeholder="New Password" name="newPassword" [(ngModel)]="newPassword" />
+        </div>
+        <div class="form-row">
+          <input
+            type="password"
+            placeholder="Retype New Password"
+            name="retypeNewPassword"
+            [(ngModel)]="retypeNewPassword"
+          />
+        </div>
+        <button type="submit" class="profile-btn">Change Password</button>
+      </form>
+    </section>
+  </main>
+</div>

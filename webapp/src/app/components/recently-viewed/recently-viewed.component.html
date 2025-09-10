@@ -1,0 +1,60 @@
+<div class="recently-viewed-container">
+  <div class="header">
+    <h2>
+      <mat-icon>history</mat-icon>
+      Recently Viewed Products
+    </h2>
+    <button 
+      mat-button 
+      color="warn" 
+      (click)="clearAll()" 
+      *ngIf="recentlyViewed.length > 0"
+      class="clear-button">
+      <mat-icon>clear_all</mat-icon>
+      Clear All
+    </button>
+  </div>
+
+  <div class="content" *ngIf="!isLoading">
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="recentlyViewed.length === 0">
+      <mat-icon class="empty-icon">visibility_off</mat-icon>
+      <h3>No Recently Viewed Products</h3>
+      <p>Start browsing products to see your recently viewed items here.</p>
+      <button mat-raised-button color="primary" (click)="router.navigate(['/products'])">
+        Browse Products
+      </button>
+    </div>
+
+    <!-- Recently Viewed Items -->
+    <div class="products-grid" *ngIf="recentlyViewed.length > 0">
+      <div class="product-item" *ngFor="let item of recentlyViewed">
+        <div class="product-wrapper">
+          <app-product-card [product]="item.product"></app-product-card>
+          
+          <!-- Remove Button -->
+          <button 
+            mat-icon-button 
+            class="remove-button"
+            (click)="removeItem(item.product._id?.toString()!)"
+            title="Remove from recently viewed">
+            <mat-icon>close</mat-icon>
+          </button>
+          
+          <!-- Viewed Time -->
+          <div class="viewed-time">
+            Viewed {{ item.viewedAt | date:'short' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="isLoading">
+    <div class="loading-spinner">
+      <mat-icon class="spinning">refresh</mat-icon>
+      <p>Loading recently viewed products...</p>
+    </div>
+  </div>
+</div>

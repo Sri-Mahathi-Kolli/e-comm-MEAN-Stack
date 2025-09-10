@@ -1,0 +1,95 @@
+
+<div class="py-10 px-4 md:px-20 bg-gray-50 min-h-screen">
+    <h1 class="text-3xl font-bold mb-8 text-blue-700">My Orders</h1>
+    <div class="space-y-8">
+        @for(order of orders; track $index){
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex justify-end mb-2">
+                    <button mat-stroked-button color="primary" (click)="reorder(order)" class="flex items-center gap-2">
+                        <mat-icon>shopping_cart</mat-icon>
+                        Reorder
+                    </button>
+                </div>
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <span class="text-gray-500">Order ID:</span>
+                                <span class="font-semibold text-blue-600">{{order._id}}</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500">Date:</span>
+                                <span class="font-semibold">{{order.date | date:'mediumDate'}}</span>
+                            </div>
+                                <div>
+                                    <span class="text-gray-500">Status:</span>
+                                    <span class="font-semibold px-2 py-1 rounded"
+                                        [ngClass]="{
+                                            'bg-green-100 text-green-700': order.status === 'Delivered',
+                                            'bg-yellow-100 text-yellow-700': order.status === 'Processing' || order.status === 'inprogress' || order.status === 'Dispatched',
+                                            'bg-blue-100 text-blue-700': order.status === 'Shipped',
+                                            'bg-red-100 text-red-700': order.status === 'Cancelled',
+                                            'bg-gray-100 text-gray-700': !order.status
+                                        }"
+                                    >{{order.status || 'Unknown'}}</span>
+                                    <div *ngIf="order.status === 'Cancelled' && order.cancellationReason" class="mt-1 text-sm text-red-500 font-medium">
+                                        Reason: {{order.cancellationReason}}
+                                    </div>
+                            </div>
+                            <div class="flex flex-col items-end gap-2">
+                                @if(canCancelOrder(order)) {
+                                    <button 
+                                        mat-raised-button 
+                                        color="warn" 
+                                        (click)="cancelOrder(order)"
+                                        class="flex items-center gap-2"
+                                    >
+                                        <mat-icon>cancel</mat-icon>
+                                        Cancel Order
+                                    </button>
+                                    <p class="text-xs text-gray-500 max-w-48 text-right">
+                                        Orders can only be cancelled while in progress
+                                    </p>
+                                } @else {
+                                    <p class="text-xs text-gray-400 max-w-48 text-right leading-relaxed">
+                                        @if(order.status === 'Cancelled') {
+                                            <!-- Removed duplicate cancellation message and reason -->
+                                        } @else if(order.status === 'Shipped' || order.status === 'Delivered') {
+                                            <span class="block">Order cannot be cancelled</span>
+                                            <span class="block">(already shipped/delivered)</span>
+                                        } @else if(order.status === 'Dispatched') {
+                                            <span class="block">Order cannot be cancelled</span>
+                                            <span class="block">(already dispatched)</span>
+                                        } @else {
+                                            <span class="block">Cancellation only available</span>
+                                            <span class="block">for orders in progress</span>
+                                        }
+                                    </p>
+                                }
+                            </div>
+                        </div>
+                <div class="divide-y">
+                    @for(item of order.items; track $index){
+                        <div class="flex flex-col md:flex-row items-center py-4">
+                                <div class="flex cursor-pointer group" *ngIf="item.product._id as pid" (click)="openProduct(pid.toString())">
+                                    <img [src]="item.product.images[0]" alt="Product" class="w-24 h-24 object-cover rounded-lg border group-hover:shadow-lg transition" />
+                                    <div class="flex-1 ml-0 md:ml-6 mt-4 md:mt-0">
+                                        <h4 class="text-lg font-semibold text-blue-700 group-hover:underline">{{item.product.name}}</h4>
+                                        <p class="text-gray-500 text-sm mb-2">{{item.product.shotDescription}}</p>
+                                        <div class="flex gap-2 items-baseline mb-2">
+                                            <span class="text-gray-400 line-through">${{ item.product.Price }}</span>
+                                            <span class="text-xs font-bold text-red-500">{{ item.product.discount }}% OFF</span>
+                                            <span class="text-green-600 font-bold">${{ sellingPrice(item.product) }}</span>
+                                        </div>
+                                        <div class="text-gray-700 text-sm">Total: <span class="font-bold">${{ sellingPrice(item.product)*item.quantity }}</span></div>
+                                    </div>
+                                </div>
+                            <div class="ml-0 md:ml-8 mt-4 md:mt-0 flex items-center">
+                                <span class="text-gray-500 mr-2">Quantity:</span>
+                                <span class="font-semibold">{{item.quantity}}</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

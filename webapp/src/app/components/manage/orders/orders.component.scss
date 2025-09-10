@@ -1,0 +1,160 @@
+.cancel-order-btn {
+  background: #ff4444 !important;
+  color: white !important;
+  font-weight: 600;
+  min-height: 44px;
+  border-radius: 8px;
+  
+  &:hover {
+    background: #cc3333 !important;
+  }
+  
+  &:disabled {
+    background: #cccccc !important;
+    color: #666666 !important;
+  }
+}
+
+.admin-orders-container {
+  .order-status-badge {
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+  
+  .order-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}
+
+.status-toggle-group {
+  width: 100%;
+  
+  .status-toggle {
+    flex: 1;
+    font-size: 0.875rem;
+    padding: 12px 8px;
+    min-height: 48px;
+    min-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    &.mat-button-toggle-checked {
+      background-color: #2196f3;
+      color: white;
+    }
+  }
+}
+
+::ng-deep .mat-button-toggle-group {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  
+  .mat-button-toggle {
+    border: 1px solid #e0e0e0;
+    flex: 1;
+    min-width: 0;
+    
+    &:not(:last-child) {
+      border-right: none;
+    }
+    
+    &:first-child {
+      border-radius: 8px 0 0 8px;
+    }
+    
+    &:last-child {
+      border-radius: 0 8px 8px 0;
+    }
+    
+    &.mat-button-toggle-checked {
+      background-color: #2196f3;
+      color: white;
+      border-color: #2196f3;
+    }
+    
+    .mat-button-toggle-label-content {
+      padding: 0 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.status-cancelled {
+  background: #ffebee !important;
+  color: #c62828 !important;
+}
+
+.status-shipped {
+  background: #e3f2fd !important;
+  color: #1565c0 !important;
+}
+
+.status-delivered {
+  background: #e8f5e8 !important;
+  color: #2e7d32 !important;
+}
+
+.status-processing {
+  background: #fff3e0 !important;
+  color: #f57c00 !important;
+}
+
+.cancel-info-text {
+  font-size: 0.75rem;
+  color: #666;
+  font-style: italic;
+}
+
+// Responsive improvements
+@media (max-width: 1024px) {
+  .status-toggle-group {
+    .status-toggle {
+      font-size: 0.8rem;
+      padding: 10px 6px;
+      min-height: 44px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cancel-order-btn {
+    font-size: 14px;
+    min-height: 40px;
+  }
+  
+  .status-toggle-group {
+    .status-toggle {
+      font-size: 0.75rem;
+      padding: 8px 4px;
+      min-height: 40px;
+      min-width: 70px;
+    }
+  }
+  
+  ::ng-deep .mat-button-toggle-group {
+    .mat-button-toggle {
+      .mat-button-toggle-label-content {
+        padding: 0 4px;
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .status-toggle-group {
+    .status-toggle {
+      font-size: 0.7rem;
+      padding: 6px 2px;
+      min-height: 36px;
+      min-width: 60px;
+    }
+  }
+}

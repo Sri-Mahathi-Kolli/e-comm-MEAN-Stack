@@ -1,0 +1,31 @@
+
+<div class="container">
+  <div class="form-container">
+    <!-- Step 1: Enter email -->
+    <form *ngIf="step === 1" [formGroup]="forgotForm" (ngSubmit)="onEmailSubmit()">
+      <h1>Forgot Password</h1>
+      <p>Enter your email address to verify your identity.</p>
+      <input type="email" formControlName="email" placeholder="Email" required autocomplete="off" />
+      <button type="submit">Next</button>
+      <div class="back-link">
+        <a href="/login">← Back to Login</a>
+      </div>
+    </form>
+
+    <!-- Step 2: Answer one random security question -->
+    <form *ngIf="step === 2" [formGroup]="questionForm" (ngSubmit)="onQuestionSubmit()">
+      <h2>Answer Security Question</h2>
+      <label>{{ selectedQuestion }}</label>
+      <input type="text" formControlName="answer" required autocomplete="off" />
+      <input type="password" formControlName="newPassword" placeholder="New Password*" required autocomplete="off" />
+      <button type="submit">Reset Password</button>
+      <div class="back-link">
+        <a href="/login">← Back to Login</a>
+      </div>
+    </form>
+
+    <div *ngIf="message" class="message">{{ message }}</div>
+
+  <!-- Success popup removed, now using window.alert -->
+  </div>
+</div>

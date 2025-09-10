@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+  box-sizing: border-box;
+}
+/* Ensure only the forgot password link is blue and underlined */
+a[routerLink="/forgot"] {
+  color: #007bff !important;
+  text-decoration: underline !important;
+}
+
+.login-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('/assets/background.webp') no-repeat center center fixed;
+  background-size: cover;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  margin: auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+h1 {
+  font-weight: bold;
+  margin: 0;
+}
+
+/* keep rest of your form styles same */
+}

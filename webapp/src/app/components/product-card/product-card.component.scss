@@ -1,0 +1,154 @@
+.product-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(77,142,239,0.08);
+  transition: box-shadow 0.25s, transform 0.25s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn 0.7s ease;
+  /* Main card hover effects */
+  &:hover {
+    box-shadow: 0 8px 32px rgba(77,142,239,0.18);
+    transform: translateY(-6px) scale(1.03);
+  }
+  img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0 0 16px 16px;
+    transition: filter 0.2s;
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+  .p-4 {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  h6, .product-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4d8eef;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: ltr;
+    width: 100%;
+  }
+  
+  .text-xs, .product-description {
+    color: #777;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: ltr;
+    width: 100%;
+  }
+  .flex {
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mat-fab {
+    transition: background 0.2s, color 0.2s;
+    box-shadow: none !important;
+  }
+
+  /* Enhanced social share button integration */
+  app-social-share {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Action buttons group styling */
+  .action-buttons-group {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Ensure all action buttons have consistent styling */
+  .mat-mdc-icon-button.share-button-icon-only {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Enhanced hover effects for the entire card with Material colors */
+  &:hover {
+    .mat-fab {
+      transform: translateY(-1px) scale(1.02);
+    }
+    
+    .share-button-icon-only {
+      background: #1565c0 !important; /* Darker primary blue on hover */
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+    }
+  }
+
+  /* Staggered animation for buttons */
+  .mat-fab:nth-child(1) {
+    transition-delay: 0ms;
+  }
+  
+  .mat-fab:nth-child(2) {
+    transition-delay: 50ms;
+  }
+  
+  app-social-share {
+    transition-delay: 100ms;
+  }
+
+  /* Add subtle glow effect on card focus */
+  &:focus-within {
+    box-shadow: 0 8px 32px rgba(77,142,239,0.18), 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Button group hover effects */
+  .action-buttons-group:hover {
+    .mat-fab,
+    .share-button-icon-only {
+      filter: brightness(1.05);
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .product-card {
+    img {
+      height: 140px;
+    }
+    .p-4 {
+      padding: 1rem;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .product-card {
+    border-radius: 10px;
+    img {
+      height: 100px;
+    }
+    .p-4 {
+      padding: 0.5rem;
+    }
+    h6 {
+      font-size: 1rem;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}

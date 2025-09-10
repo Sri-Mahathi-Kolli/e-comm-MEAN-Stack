@@ -1,0 +1,123 @@
+<div class="profile-page">
+  <aside class="profile-sidebar">
+    <div class="profile-user">
+      <img 
+        [src]="getProfileImageUrl()" 
+        alt="Profile" 
+        class="profile-img" 
+      />
+  <h2>{{user.firstName || ''}} {{user.lastName || ''}}</h2>
+  <p>{{user.location || 'Your Location'}} </p>
+
+      <!-- Image Upload Form -->
+      <form (submit)="uploadImage($event)" style="margin-top: 1rem;">
+        <input 
+          type="file" 
+          accept="image/*" 
+          (change)="onImageSelected($event)" 
+          style="margin-bottom: 0.5rem;" 
+        />
+        <button 
+          type="submit" 
+          class="profile-btn" 
+          [disabled]="!selectedImage"
+        >
+          Upload Image
+        </button>
+      </form>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="profile-nav">
+      <a (click)="goToOrders()" class="profile-link">Orders</a>
+      <a (click)="showProfile()" class="profile-link active">Profile</a>
+      <a (click)="goToAddresses()" class="profile-link">Addresses</a>
+      <a (click)="logout()" class="profile-link">Log out</a>
+    </nav>
+  </aside>
+
+  <main class="profile-main">
+    <h1>Your Profile</h1>
+
+    <!-- Info Cards -->
+    <div class="profile-cards">
+      <div class="profile-card">
+        <span class="profile-icon">🚚</span>
+        <h3>Free Shipping & Return</h3>
+        <p>Free Shipping over ₹300</p>
+      </div>
+      <div class="profile-card">
+        <span class="profile-icon">💸</span>
+        <h3>Money Back Guarantee</h3>
+        <p>30 Days Money Back Guarantee</p>
+      </div>
+      <div class="profile-card">
+        <span class="profile-icon">📞</span>
+        <h3>24/7 Support</h3>
+        <p>+91-98765-43210</p>
+      </div>
+    </div>
+
+  <!-- Profile Details Form -->
+  <section class="profile-details">
+    <!-- Addresses Section (add this if not present) -->
+    <section class="profile-addresses">
+      <!-- Your addresses UI here -->
+    </section>
+      <h2>Personal Details</h2>
+  <form (submit)="saveProfile()">
+        <div class="form-row">
+          <input type="text" placeholder="First Name" [(ngModel)]="user.firstName" name="firstName" />
+          <input type="text" placeholder="Last Name" [(ngModel)]="user.lastName" name="lastName" />
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="Company" [(ngModel)]="user.company" name="company" />
+          <input type="text" placeholder="Street" [(ngModel)]="user.street" name="street" />
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="ZIP" [(ngModel)]="user.zip" name="zip" />
+          <input type="text" placeholder="State" [(ngModel)]="user.state" name="state" />
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="Country" [(ngModel)]="user.country" name="country" />
+          <input type="text" placeholder="Telephone" [(ngModel)]="user.telephone" name="telephone" />
+        </div>
+        <div class="form-row">
+          <!-- Email is readonly (not editable but visible & submitted) -->
+          <input 
+            type="email" 
+            placeholder="Email" 
+            [(ngModel)]="user.email" 
+            name="email" 
+            disabled 
+            style="background-color: #f3f4f6; color: #a0aec0; cursor: not-allowed;" 
+          />
+        </div>
+        <button type="submit" class="profile-btn">Save Changes</button>
+      </form>
+    </section>
+
+    <!-- Change Password Form -->
+    <section class="profile-password">
+      <h2>Change Password</h2>
+  <form (submit)="changePassword($event)">
+        <div class="form-row">
+          <input type="password" placeholder="Old Password" [(ngModel)]="oldPassword" name="oldPassword" />
+        </div>
+        <div class="form-row">
+          <input type="password" placeholder="New Password" [(ngModel)]="newPassword" name="newPassword" />
+        </div>
+        <div class="form-row">
+          <input type="password" placeholder="Retype New Password" [(ngModel)]="retypeNewPassword" name="retypeNewPassword" />
+        </div>
+        <button type="submit" class="profile-btn">Change Password</button>
+      </form>
+    </section>
+
+    <!-- Offers -->
+    <section class="profile-offers">
+      <h2>Daily Offers & Discounts</h2>
+      <p>Check out our latest deals and discounts available for you!</p>
+    </section>
+  </main>
+</div>

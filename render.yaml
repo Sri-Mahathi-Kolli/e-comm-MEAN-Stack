@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: ecomm-backend
+    env: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+
+      - key: JWT_SECRET
+        value: 6f5f5a25-bb9f-4b68-a38d-41c23d112bd4
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: https://e-comm-mean-stack.vercel.app,https://saarvi.vercel.app,https://e-comm-mean-stack.onrender.com
+      - key: FRONTEND_URL
+        value: https://saarvi.vercel.app
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+    healthCheckPath: /health

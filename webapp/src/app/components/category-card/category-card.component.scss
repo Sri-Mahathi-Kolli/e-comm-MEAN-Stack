@@ -1,0 +1,55 @@
+
+.category-card {
+  width: 100%;
+  max-width: 420px;
+  min-height: 320px;
+  background: linear-gradient(135deg, #f8fafc 60%, #fce7f3 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  border: 2px solid transparent;
+  transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+  animation: fadeIn 0.7s;
+  margin: 0 auto;
+  &:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    transform: translateY(-4px) scale(1.05);
+    border-color: #f472b6;
+  }
+}
+
+.gradient-border {
+  border-image: linear-gradient(135deg, #f472b6 0%, #60a5fa 100%) 1;
+}
+
+.featured-badge {
+  z-index: 2;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(244,114,182,0.15);
+}
+
+.scale-on-hover {
+  transition: transform 0.3s;
+}
+.category-card:hover .scale-on-hover {
+  transform: scale(1.08);
+}
+
+.icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 768px) {
+  .category-card {
+    min-height: 220px;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+}

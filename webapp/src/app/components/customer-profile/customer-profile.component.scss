@@ -1,0 +1,142 @@
+
+/* Modern profile page styles */
+.profile-page {
+  display: flex;
+  gap: 32px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  padding: 32px 0;
+}
+.profile-sidebar {
+  width: 280px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-user {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.profile-img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  background: #e0e0e0;
+}
+.profile-user h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+.profile-user p {
+  color: #888;
+  font-size: 1rem;
+}
+.profile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.profile-link {
+  color: #0084ff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 0;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.profile-link.active, .profile-link:hover {
+  background: #e3f2fd;
+  color: #005fa3;
+}
+.profile-main {
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 32px 40px;
+}
+.profile-main h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.profile-cards {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.profile-card {
+  background: #e3f2fd;
+  border-radius: 12px;
+  padding: 24px 18px;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.profile-icon {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  display: block;
+}
+.profile-details, .profile-password, .profile-offers {
+  margin-bottom: 32px;
+}
+.profile-details h2, .profile-password h2, .profile-offers h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.form-row input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #cfd8dc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f7f9fc;
+}
+.profile-btn {
+  background: #0084ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+.profile-btn:hover {
+  background: #005fa3;
+}
+@media (max-width: 900px) {
+  .profile-page {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 0;
+  }
+  .profile-main {
+    padding: 24px 12px;
+  }
+  .profile-sidebar {
+    width: 100%;
+    padding: 24px 12px;
+  }
+  .profile-cards {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
