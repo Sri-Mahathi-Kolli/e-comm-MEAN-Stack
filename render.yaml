@@ -16,9 +16,9 @@ services:
       - key: STRIPE_SECRET_KEY
         sync: false
       - key: ALLOWED_ORIGINS
-        value: https://e-comm-mean-stack.vercel.app,https://saarvi.vercel.app,https://e-comm-mean-stack.onrender.com
+        value: https://e-comm-mean-stack.vercel.app,https://s-a-a-r-v-i.vercel.app,https://e-comm-mean-stack-42og.onrender.com
       - key: FRONTEND_URL
-        value: https://saarvi.vercel.app
+        value: https://s-a-a-r-v-i.vercel.app
       - key: EMAIL_USER
         sync: false
       - key: EMAIL_PASS
