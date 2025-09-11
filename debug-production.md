@@ -19,10 +19,10 @@
 ### 2. **Test Backend API Directly**
 ```bash
 # Test if backend is running
-curl https://e-comm-mean-stack.onrender.com/health
+curl https://e-comm-mean-stack-42og.onrender.com/health
 
 # Test cancel order endpoint (need valid token)
-curl -X POST https://e-comm-mean-stack.onrender.com/customer/orders/ORDER_ID/cancel \
+curl -X POST https://e-comm-mean-stack-42og.onrender.com/customer/orders/ORDER_ID/cancel \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json"
 ```
@@ -39,7 +39,7 @@ ls dist/webapp
 
 ### 4. **Environment Variables Check**
 - ✅ Frontend URL: https://s-a-a-r-v-i.vercel.app
-- ✅ Backend URL: https://e-comm-mean-stack.onrender.com
+- ✅ Backend URL: https://e-comm-mean-stack-42og.onrender.com
 - ❓ CORS configured for frontend domain?
 - ❓ Backend environment variables set?
 
@@ -76,7 +76,7 @@ git push origin main
 Ensure production environment uses correct API URL:
 ```typescript
 // environment.prod.ts should have:
-apiUrl: 'https://e-comm-mean-stack.onrender.com'
+apiUrl: 'https://e-comm-mean-stack-42og.onrender.com'
 ```
 
 ### 7. **Testing Checklist**

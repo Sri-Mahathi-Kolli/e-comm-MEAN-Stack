@@ -22,13 +22,13 @@ Your CORS configuration is now fully compatible with all major platforms:
 
 ### 1. **Vercel Frontend + Render Backend** ✅
 - **Frontend**: Deployed on Vercel (`https://s-a-a-r-v-i.vercel.app`)
-- **Backend**: Deployed on Render (`https://e-comm-mean-stack.onrender.com`)
+- **Backend**: Deployed on Render (`https://e-comm-mean-stack-42og.onrender.com`)
 - **CORS**: ✅ Configured and working
 - **Environment**: Production environment points to Render backend
 
 ### 2. **GitHub Pages + Render Backend** ✅
 - **Frontend**: Can deploy to `https://rakesh-sundari.github.io/e-comm-Mean-Stack`
-- **Backend**: Same Render backend (`https://e-comm-mean-stack.onrender.com`)
+- **Backend**: Same Render backend (`https://e-comm-mean-stack-42og.onrender.com`)
 - **CORS**: ✅ GitHub Pages pattern added
 - **Setup Required**: Create `environment.github.ts` if needed
 

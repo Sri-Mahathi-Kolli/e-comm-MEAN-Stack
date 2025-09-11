@@ -5,7 +5,7 @@ const isProduction = typeof window !== 'undefined' &&
 
 export const environment = {
   production: isProduction,
-  apiUrl: isProduction ? 'https://e-comm-mean-stack.onrender.com' : 'http://localhost:3000',
+  apiUrl: isProduction ? 'https://e-comm-mean-stack-42og.onrender.com' : 'http://localhost:3000',
   frontendUrl: isProduction ? 'https://s-a-a-r-v-i.vercel.app' : 'http://localhost:4200',
   stripePublishableKey: 'pk_test_51S2M7pBiOdK8gYs8ynQUFp3zDcwxtTFeeFJguXFwiTJixcEBSS7O7hccLXzNeSQnelTQL2YOS4TfrJgkj3XWQadi0015BKbYKr'
 };

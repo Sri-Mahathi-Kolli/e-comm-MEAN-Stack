@@ -23,7 +23,7 @@
    MONGO_URI=mongodb+srv://username:password@cluster0.xxxxxxx.mongodb.net/e-comm-store-db?retryWrites=true&w=majority&appName=Cluster0
    JWT_SECRET=your-jwt-secret-here
    STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key_here
-   ALLOWED_ORIGINS=https://e-comm-mean-stack.vercel.app,https://s-a-a-r-v-i.vercel.app,https://e-comm-mean-stack.onrender.com
+   ALLOWED_ORIGINS=https://e-comm-mean-stack.vercel.app,https://s-a-a-r-v-i.vercel.app,https://e-comm-mean-stack-42og.onrender.com
    FRONTEND_URL=https://s-a-a-r-v-i.vercel.app
    EMAIL_USER=your_email@gmail.com
    EMAIL_PASS=your_app_password
