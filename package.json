@@ -9,15 +9,13 @@
     "install-frontend": "cd webapp && npm install",
     "build": "cd backend && npm install",
     "dev": "cd backend && npm start"
-    ,
-    "start-frontend": "cd webapp && ng serve",
-    "build-frontend": "cd webapp && ng build"
+    
   },
   "repository": {
     "type": "git",
   "url": "https://github.com/Sri-Mahathi-Kolli/e-comm-MEAN-Stack.git"
   },
-  "author": "Rakesh Sundari",
+  "author": "Sri Mahathi Kolli",
   "license": "ISC",
   "dependencies": {
     "cloudinary": "^2.7.0",
